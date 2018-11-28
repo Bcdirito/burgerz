@@ -5,12 +5,19 @@ import BurgerContainer from './components/BurgerContainer'
 import BurgerDisplay from './components/BurgerDisplay'
 
 class App extends Component {
+  state = {
+    savedBurger: {}
+  }
+
+  saveBurger = (burger) => {
+    this.setState({ savedBurger: burger})
+  }
 
   render() {
     return (
       <div id="App">
-        <BurgerContainer />
-        <BurgerDisplay />
+        <BurgerContainer saveBurger={this.saveBurger}/>
+        <BurgerDisplay burger={this.state.savedBurger}/>
       </div>
     );
   }
